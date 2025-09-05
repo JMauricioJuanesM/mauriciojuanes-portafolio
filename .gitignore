@@ -1,29 +1,44 @@
+# ########## WordPress ##########
+# Ignorar el Core de WordPress.
+# La idea es que WordPress se gestiona y actualiza por separado, no a través de tu repo.
 /wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
 /wp-includes/
+/wp-*.php
 /index.php
 /license.txt
 /readme.html
-/wp-*.php
 /xmlrpc.php
 
-# Configuration
-wp-config.php
+# ########## Contenido y Archivos de Terceros ##########
+# Ignorar contenido generado por el usuario, nunca debe estar en el repo.
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/backups/
 
-# Example themes
+# Ignorar archivos de caché y lenguajes que WordPress gestiona solo.
+/wp-content/cache/
+/wp-content/languages/
+
+# Ignorar los temas y plugins que vienen por defecto con WordPress.
+# TUS temas y plugins SÍ deben ser trackeados.
 /wp-content/themes/twenty*/
-
-# Example plugin
 /wp-content/plugins/hello.php
 
-# Uploads
-/wp-content/uploads/
+# ########## Configuración y Archivos Sensibles ##########
+# El archivo MÁS IMPORTANTE a ignorar. Contiene las claves de la base de datos.
+wp-config.php
 
-# Log files
+# ########## Archivos de Logs y Sistema Operativo ##########
+# Ignorar logs de depuración y errores.
 *.log
+debug.log
 
-# htaccess
-/.htaccess
+# Ignorar archivos basura de macOS y Windows.
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ########## Dependencias (Opcional pero recomendado) ##########
+# Si usas Composer o NPM para dependencias de PHP/JS.
+/vendor/
+/node_modules/
