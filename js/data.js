@@ -18,7 +18,7 @@ const portfolioData = {
         hero: {
             initials: "MJ",
             location: "Zacatecas, México",
-            title: "José Mauricio Juanes Martínez",
+            title: "Mauricio Juanes",
             typedStrings: [
                 "Desarrollador Full-Stack",
                 "Frontend & UI/UX Specialist",
@@ -39,7 +39,7 @@ const portfolioData = {
                     companyType: "Centro de Investigación e Innovación en TIC (Gobierno de México)",
                     period: "2025 — Presente",
                     location: "México (Híbrido)",
-                    badge: "1.er Lugar · Escala Nacional",
+                    badge: "Escala Nacional",
                     intro: "Diseño y desarrollo frontend/UI/UX para sistemas críticos del Gobierno de México con alto volumen de usuarios e impacto ciudadano:",
                     highlights: [
                         "<strong>PNC (Plataforma Nacional Catastral):</strong> Diseño e implementación de interfaces modernas para la plataforma catastral nacional, con alcance y despliegue en <strong>+900 municipios</strong> y millones de usuarios en producción.",
@@ -58,7 +58,7 @@ const portfolioData = {
                     companyType: "Plataforma de Logística & Delivery",
                     period: "2020 — Presente",
                     location: "Zacatecas, México",
-                    badge: "2.º Lugar · Startup & Escalabilidad",
+                    badge: "Startup & Escalabilidad",
                     intro: "Dirección técnica y arquitectura integral de plataforma de última milla con <strong>+35,000 pedidos completados</strong> y +1,000 descargas activas:",
                     highlights: [
                         "<strong>Arquitectura Backend Reactiva:</strong> Diseño y despliegue del core en <strong>NestJS</strong>, <strong>PostgreSQL</strong>, <strong>Docker</strong> y <strong>WebSockets</strong> para tracking satelital GPS en tiempo real de repartidores.",
@@ -79,7 +79,7 @@ const portfolioData = {
                     companyType: "Ecosistemas Autónomos & Multi-Agente",
                     period: "2024 — Presente",
                     location: "Remoto",
-                    badge: "3.er Lugar · Inteligencia Artificial",
+                    badge: "Inteligencia Artificial",
                     intro: "Diseño y despliegue de agentes inteligentes multimodal con integración omnicanal y blindaje de seguridad:",
                     highlights: [
                         "<strong>Arquitectura Multi-Agente (DDD):</strong> Ecosistema modular en Domain-Driven Design para <strong>WhatsApp</strong> (BuilderBot + Baileys) y <strong>Telegram</strong> (GrammY) con persistencia en PostgreSQL.",
@@ -188,9 +188,16 @@ const portfolioData = {
                 {
                     title: "Ingeniería en Sistemas Computacionales",
                     school: "Instituto Politécnico Nacional (IPN) — UPIIZ",
-                    period: "2019 — 2026 (Titulación en trámite)",
+                    period: "2018 — 2023",
                     description: "Formación de alto nivel en ciencias de la computación, desarrollo de software empresarial, arquitectura de sistemas y gestión de proyectos tecnológicos en una de las instituciones líderes del país.",
                     tag: "IPN UPIIZ"
+                },
+                {
+                    title: "Bachillerato Técnico en Soporte y Mantenimiento",
+                    school: "CECYTEZ",
+                    period: "2015 — 2018",
+                    description: "Bases sólidas en infraestructura de hardware, redes de datos, mantenimiento preventivo/correctivo y administración de sistemas operativos.",
+                    tag: "CECYTEZ"
                 },
                 {
                     title: "Formación de Idiomas — Inglés B1/B2",
@@ -198,13 +205,6 @@ const portfolioData = {
                     period: "Certificación Continua",
                     description: "Nivel B1 consolidado en camino a acreditación B2. Comunicación técnica fluida para lectura de documentación, redacción y colaboración en equipos multidisciplinarios e internacionales.",
                     tag: "Inglés B1 / B2"
-                },
-                {
-                    title: "Bachillerato Técnico en Soporte y Mantenimiento",
-                    school: "CECYTEZ",
-                    period: "2014 — 2017",
-                    description: "Bases sólidas en infraestructura de hardware, redes de datos, mantenimiento preventivo/correctivo y administración de sistemas operativos.",
-                    tag: "CECYTEZ"
                 }
             ]
         },
@@ -261,7 +261,7 @@ const portfolioData = {
             sectionTitle: "Contacto",
             description: "¿Tienes un proyecto en mente, buscas un perfil full-stack para tu equipo o te interesa colaborar en soluciones de software e IA? Escríbeme y conectemos.",
             buttonText: "Enviar Correo Electrónico",
-            footerText: `&copy; ${new Date().getFullYear()} José Mauricio Juanes Martínez — Diseñado con elegancia, modularidad y alto rendimiento.`
+            footerText: `&copy; ${new Date().getFullYear()} Mauricio Juanes — Diseñado con elegancia, modularidad y alto rendimiento.`
         }
     },
     en: {
@@ -277,7 +277,7 @@ const portfolioData = {
         hero: {
             initials: "MJ",
             location: "Zacatecas, Mexico",
-            title: "José Mauricio Juanes Martínez",
+            title: "Mauricio Juanes",
             typedStrings: [
                 "Full-Stack Developer",
                 "Frontend & UI/UX Specialist",
@@ -298,7 +298,7 @@ const portfolioData = {
                     companyType: "National ICT Research & Innovation Center (Gov of Mexico)",
                     period: "2025 — Present",
                     location: "Mexico (Hybrid)",
-                    badge: "Top Priority · Nationwide Scale",
+                    badge: "Nationwide Scale",
                     intro: "Frontend and UI/UX engineering for high-impact mission-critical platforms in Mexico's public sector:",
                     highlights: [
                         "<strong>PNC (National Cadastral Platform):</strong> UI/UX design and production implementation for nationwide cadastral management across <strong>+900 municipalities</strong> and millions of citizens.",
@@ -447,9 +447,16 @@ const portfolioData = {
                 {
                     title: "B.S. in Computer Systems Engineering",
                     school: "Instituto Politécnico Nacional (IPN) — UPIIZ",
-                    period: "2019 — 2026 (Degree in process)",
+                    period: "2018 — 2023",
                     description: "Advanced education in computer science, enterprise software development, system architecture, and tech project management at one of Latin America's premier institutes.",
                     tag: "IPN UPIIZ"
+                },
+                {
+                    title: "Technical High School — IT Support & Systems",
+                    school: "CECYTEZ",
+                    period: "2015 — 2018",
+                    description: "Strong fundamentals in hardware infrastructure, network engineering, preventive maintenance, and Linux/Windows systems administration.",
+                    tag: "CECYTEZ"
                 },
                 {
                     title: "Language Training — English B1/B2",
@@ -457,13 +464,6 @@ const portfolioData = {
                     period: "Continuous Certification",
                     description: "Solid B1 proficiency transitioning to B2 certification. Fluent technical communication for documentation, architecture, and international collaboration.",
                     tag: "English B1 / B2"
-                },
-                {
-                    title: "Technical High School — IT Support & Systems",
-                    school: "CECYTEZ",
-                    period: "2014 — 2017",
-                    description: "Strong fundamentals in hardware infrastructure, network engineering, preventive maintenance, and Linux/Windows systems administration.",
-                    tag: "CECYTEZ"
                 }
             ]
         },
@@ -520,7 +520,7 @@ const portfolioData = {
             sectionTitle: "Contact",
             description: "Have a project in mind, looking for a full-stack engineer for your team, or interested in collaborating on software & AI? Let's connect.",
             buttonText: "Send Email",
-            footerText: `&copy; ${new Date().getFullYear()} José Mauricio Juanes Martínez — Built with precision, modularity, and high performance.`
+            footerText: `&copy; ${new Date().getFullYear()} Mauricio Juanes — Built with precision, modularity, and high performance.`
         }
     }
 };

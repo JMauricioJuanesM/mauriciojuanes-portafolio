@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Portafolio Profesional — José Mauricio Juanes Martínez
+   Portafolio Profesional — Mauricio Juanes
    Sistema de Diseño Moderno, Elegante y Modular
    ========================================================================== */
 
@@ -312,10 +312,19 @@ section:last-of-type {
     border-bottom: 1px solid var(--border-color);
 }
 
+.hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile-avatar-wrapper {
     position: relative;
-    margin-bottom: 1.5rem;
-    display: inline-block;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Avatar con Iniciales "MJ" Elegantes y Sin QR */
@@ -345,6 +354,7 @@ section:last-of-type {
 .location-pill {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     background: var(--surface-glass);
     backdrop-filter: blur(10px);
@@ -355,8 +365,14 @@ section:last-of-type {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-secondary);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.25rem;
     box-shadow: var(--shadow-color);
+    transition: transform 0.25s var(--ease-out-expo), border-color 0.25s ease;
+}
+
+.location-pill:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .location-pill i {
@@ -942,10 +958,28 @@ footer {
         padding-bottom: 60px;
     }
 
+    .hero .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-avatar-wrapper {
+        margin-bottom: 10px;
+    }
+
     .profile-avatar {
-        width: 125px;
-        height: 125px;
-        font-size: 2.8rem;
+        width: 120px;
+        height: 120px;
+        font-size: 2.7rem;
+    }
+
+    .location-pill {
+        margin-top: 2px;
+        margin-bottom: 1.1rem;
+        font-size: 0.82rem;
+        padding: 5px 14px;
     }
 
     .hero h1 {
