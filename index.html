@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mauricio Juanes - Desarrollador de Software</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+    <style>
+        :root {
+            --primary-color: #0ea5e9; /* Azul Cielo */
+            --primary-color-hover: #0284c7;
+            
+            /* --- Tema Claro (por defecto) --- */
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+
+            --transition-speed: 0.3s;
+        }
+
+        /* --- Tema Oscuro --- */
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        /* --- Animaciones de Entrada (Controladas por JS) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Botones de UI (Tema e Idioma) --- */
+        .ui-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 10px;
+        }
+        .ui-button {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex; justify-content: center; align-items: center;
+            transition: all var(--transition-speed);
+            box-shadow: 0 4px 8px var(--shadow-color);
+            font-weight: 700;
+        }
+        .ui-button:hover { transform: scale(1.1) rotate(15deg); }
+        #theme-toggle .fa-sun { display: none; }
+        body.dark-mode #theme-toggle .fa-sun { display: inline-block; }
+        body.dark-mode #theme-toggle .fa-moon { display: none; }
+
+        /* --- Barra de Navegación --- */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 15px 0; z-index: 1000;
+            background-color: transparent;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid transparent;
+            transition: all var(--transition-speed) ease-in-out;
+        }
+        .navbar.scrolled {
+            background-color: color-mix(in srgb, var(--surface-color) 80%, transparent);
+            border-bottom-color: var(--border-color);
+        }
+        .nav-container {
+            max-width: 1100px; margin: 0 auto; padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo { font-weight: 700; font-size: 1.2rem; color: var(--text-primary); text-decoration: none; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none;
+            margin-left: 25px; font-weight: 600; transition: color var(--transition-speed);
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        /* --- Estructura Principal --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
+        section:last-of-type { border-bottom: none; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--text-primary); }
+        .section-title i { margin-right: 15px; color: var(--primary-color); }
+
+        /* --- Sección Hero --- */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(ellipse at top, color-mix(in srgb, var(--primary-color) 5%, transparent), transparent 70%),
+                        radial-gradient(ellipse at bottom, color-mix(in srgb, var(--bg-color) 80%, transparent), transparent 70%);
+        }
+        .profile-photo {
+            width: 180px; height: 180px; border-radius: 50%;
+            border: 5px solid var(--primary-color); object-fit: cover;
+            box-shadow: 0 10px 30px var(--shadow-color); margin-bottom: 1.5rem;
+        }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .hero .subtitle {
+            font-size: 1.3rem; font-weight: 400; color: var(--text-secondary);
+            margin-bottom: 1.5rem; min-height: 2em; /* Para evitar saltos de layout */
+        }
+        .typed-cursor { opacity: 1; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .hero .bio { max-width: 700px; margin-bottom: 2rem; font-size: 1.1rem; }
+        .social-links a {
+            color: var(--text-secondary); font-size: 2rem; margin: 0 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
+        .main-cta { margin-top: 2rem; }
+        
+        /* --- Tarjetas (Experiencia, Proyectos, Educación) --- */
+        .card {
+            background: var(--surface-color); border: 1px solid var(--border-color);
+            border-radius: 12px; margin-bottom: 40px; overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; flex-direction: column;
+        }
+        @media (min-width: 768px) {
+            .card { flex-direction: row; }
+            .card:nth-of-type(even) { flex-direction: row-reverse; }
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 25px var(--shadow-color); }
+        .card-image {
+            background-color: var(--bg-color); flex-shrink: 0; overflow: hidden;
+        }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease-out; }
+        .card:hover .card-image img { transform: scale(1.05); }
+        @media (min-width: 768px) { .card-image { width: 35%; } }
+        #education .card-image { display: none; } /* Ocultar imagen en educación para más texto */
+        @media (min-width: 768px) { #education .card-image { display: block; width: 30%; } }
+
+
+        .card-info { padding: 30px; }
+        .card-info h4 { font-size: 1.6rem; margin-bottom: 10px; }
+        .card-info .meta { color: var(--text-secondary); margin-bottom: 10px; font-weight: 600; }
+        .card-info p { color: var(--text-secondary); margin-bottom: 20px; }
+        .card-stack span {
+            display: inline-block; background: var(--bg-color); color: var(--text-secondary);
+            padding: 6px 12px; border-radius: 99px; font-size: 0.8rem;
+            margin: 5px 5px 15px 0; font-weight: 600; border: 1px solid var(--border-color);
+        }
+        .button {
+            display: inline-block; background: var(--primary-color); color: white;
+            padding: 12px 25px; border-radius: 8px; text-decoration: none;
+            font-weight: bold; transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            border: none; cursor: pointer;
+        }
+        .button:hover {
+            transform: translateY(-3px); background-color: var(--primary-color-hover);
+            box-shadow: 0 10px 20px color-mix(in srgb, var(--primary-color) 25%, transparent);
+        }
+        .card-links { display: flex; gap: 10px; flex-wrap: wrap; }
+        .button.secondary {
+             background: var(--surface-color); color: var(--primary-color);
+             border: 1px solid var(--primary-color);
+        }
+         .button.secondary:hover { background: var(--primary-color); color: white; }
+        
+        /* --- Grid de Habilidades --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .skill-category {
+            background-color: var(--surface-color); padding: 30px; border-radius: 12px;
+            border: 1px solid var(--border-color); box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .skill-category:hover { transform: translateY(-10px); box-shadow: 0 15px 25px var(--shadow-color); }
+        .skill-category h4 {
+            display: flex; align-items: center; font-size: 1.2rem;
+            margin-bottom: 15px; color: var(--text-primary);
+        }
+        .skill-category h4 svg { width: 24px; height: 24px; margin-right: 12px; color: var(--primary-color); }
+        .skill-category ul { list-style: none; padding-left: 0; }
+        .skill-category ul li { margin-bottom: 10px; color: var(--text-secondary); }
+        .skill-category ul li::before {
+            content: '✓'; color: var(--primary-color);
+            margin-right: 10px; font-weight: bold;
+        }
+
+        /* --- Sección de Contacto y Footer --- */
+        #contact { text-align: center; }
+        #contact p { max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; }
+        footer { text-align: center; padding: 40px 20px; color: var(--text-secondary); }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 0; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .section-title { font-size: 2rem; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ui-buttons">
+        <button id="lang-toggle" class="ui-button" title="Change Language"></button>
+        <button id="theme-toggle" class="ui-button" title="Cambiar tema">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Mauricio Juanes</a>
+            <div class="nav-links">
+                <a href="#experience" data-key="navExperience">Experiencia</a>
+                <a href="#projects" data-key="navProjects">Proyectos</a>
+                <a href="#education" data-key="navEducation">Educación</a>
+                <a href="#skills" data-key="navSkills">Habilidades</a>
+                <a href="#contact" data-key="navContact">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <img src="https://placehold.co/180x180/0ea5e9/FFFFFF?text=MJ" alt="Mauricio Juanes" class="profile-photo reveal"/>
+            <h1 class="reveal" style="transition-delay: 0.1s;">Mauricio Juanes</h1>
+            <h2 class="subtitle reveal" style="transition-delay: 0.2s;"><span id="typed"></span></h2>
+            <p class="bio reveal" style="transition-delay: 0.3s;" data-key="heroBio">
+                Líder tecnológico con 5+ años de experiencia diseñando e implementando arquitecturas backend escalables. Experto en <strong>Node.js</strong>, gestión de BBDD y APIs <strong>RESTful</strong>, guiando equipos para optimizar procesos, impulsar la eficiencia y elevar la satisfacción del cliente en entornos de alta demanda como MasFast.
+            </p>
+            <div class="social-links reveal" style="transition-delay: 0.4s;">
+                <a href="https://linkedin.com/in/mauricio-juanes" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://gitlab.com/JMauricioJuanesM" target="_blank" title="GitLab"><i class="fab fa-gitlab"></i></a>
+                <a href="https://github.com/JMauricioJuanesM" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+             <div class="main-cta reveal" style="transition-delay: 0.5s;">
+                <a href="#contact" class="button" data-key="heroCTA">Hablemos</a>
+            </div>
+        </header>
+        
+        <section id="experience">
+            <h3 class="section-title reveal"><i class="fas fa-briefcase"></i><span data-key="experienceTitle">Experiencia Profesional</span></h3>
+            <div class="card reveal">
+                <div class="card-image"><img src="https://placehold.co/600x400/0f172a/0ea5e9?text=MasFast" alt="Logo MasFast"></div>
+                <div class="card-info">
+                    <h4 data-key="exp1Title">Fundador, CEO & CTO - MasFast</h4>
+                    <p class="meta" data-key="exp1Date">(Abril 2020 - Presente)</p>
+                    <p data-key="exp1Desc">Lideré la estrategia y ejecución integral del negocio. Como <strong>CTO</strong>, diseñé y desarrollé la arquitectura full-stack (Flutter, NestJS, Docker). Como <strong>CEO</strong>, gestioné operaciones, desarrollo de negocio, marketing y relaciones con clientes y restaurantes asociados, logrando +25,000 entregas y +1,000 descargas.</p>
+                    <div class="card-stack">
+                        <span>Liderazgo</span><span data-key="tagBizDev">Desarrollo de Negocio</span><span>Node.js</span><span>Flutter</span><span>SQL</span><span>DevOps</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://masfast.shop" class="button" target="_blank"><i class="fas fa-globe"></i><span data-key="viewWebsite"> Sitio Web</span></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.talzzoft.masfast" class="button secondary" target="_blank"><i class="fab fa-google-play"></i><span data-key="viewOnPlayStore"> Ver en Play Store</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card reveal">
+                <div class="card-image"><img src="https://placehold.co/600x400/0f172a/0ea5e9?text=Infotec" alt="Logo Infotec"></div>
+                <div class="card-info">
+                    <h4 data-key="exp2Title">Desarrollador de Software Mid-Level - INFOTEC</h4>
+                    <p class="meta" data-key="exp2Date">(Mayo 2025 - Presente)</p>
+                    <p data-key="exp2Desc">Desarrollo de software en la Agencia Digital del Gobierno de México. Mi rol tiene una doble especialización: mantengo y evoluciono sistemas críticos con <strong>PHP/WordPress</strong> y construyo nuevas soluciones empresariales robustas utilizando el stack de <strong>Java/Jakarta EE</strong>.</p>
+                    <div class="card-stack"><span>Java</span><span>Jakarta EE</span><span>PHP</span><span>WordPress</span><span>SQL</span><span>CI/CD</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h3 class="section-title reveal"><i class="fas fa-rocket"></i><span data-key="projectsTitle">Proyectos Relevantes</span></h3>
+            <div class="card reveal">
+                 <div class="card-image"><img src="https://placehold.co/600x400/0f172a/0ea5e9?text=ReflejArte" alt="Proyecto ReflejArte"></div>
+                 <div class="card-info">
+                    <h4 data-key="proj1Title">ReflejArte - E-commerce (Proyecto Titulación)</h4>
+                    <p data-key="proj1Desc">Desarrollo de backend con WordPress y WooCommerce para una tienda de artes plásticas. Implementación de la API REST de WordPress para sincronizar con la app móvil (Flutter), demostrando experiencia en e-commerce y integración con plataformas móviles.</p>
+                    <div class="card-stack"><span>WordPress</span><span>WooCommerce</span><span>Flutter</span><span>API REST</span><span>PHP</span></div>
+                     <div class="card-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.talzzoft.reflejarte" class="button" target="_blank"><i class="fab fa-google-play"></i><span data-key="viewOnPlayStore"> Ver en Play Store</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card reveal">
+                 <div class="card-image"><img src="https://placehold.co/600x400/0f172a/0ea5e9?text=YakTask" alt="Proyecto YakTask"></div>
+                 <div class="card-info">
+                    <h4 data-key="proj2Title">YakTask API - Laboratorio Jakarta EE</h4>
+                    <p data-key="proj2Desc">Microservicio RESTful para gestión de tareas, mi "gimnasio técnico" para dominar el stack empresarial de Jakarta EE 10. Aplico rigurosamente las mejores prácticas: Patrón Repositorio, DTOs, validación de datos y un flujo profesional con Git Flow.</p>
+                    <div class="card-stack"><span>Jakarta EE 10</span><span>JAX-RS</span><span>JPA</span><span>CDI</span><span>WildFly</span><span>Git Flow</span></div>
+                     <div class="card-links">
+                        <a href="https://gitlab.com/JMauricioJuanesM/yak-task-api" class="button" target="_blank"><i class="fab fa-gitlab"></i><span data-key="viewCode"> Ver Código</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h3 class="section-title reveal"><i class="fas fa-user-graduate"></i><span data-key="educationTitle">Educación</span></h3>
+            <div class="card reveal">
+                <div class="card-image"><img src="https://placehold.co/600x400/0f172a/0ea5e9?text=IPN" alt="Logo IPN"></div>
+                <div class="card-info">
+                    <h4 data-key="edu1Title">Ingeniería en Sistemas Computacionales</h4>
+                    <p class="meta" data-key="edu1School">Instituto Politécnico Nacional (IPN) - UPIIZ</p>
+                    <p data-key="edu1Desc">Graduado de una de las instituciones de ingeniería más prestigiosas y exigentes de México y América Latina. Formación integral en ciencias de la computación, desarrollo de software, y sistemas de información.</p>
+                </div>
+            </div>
+            <div class="card reveal">
+                <div class="card-image"><img src="https://placehold.co/600x400/0f172a/0ea5e9?text=CECYTEZ" alt="Logo CECYTEZ"></div>
+                <div class="card-info">
+                    <h4 data-key="edu2Title">Bachillerato Técnico en Soporte y Mantenimiento</h4>
+                    <p class="meta" data-key="edu2School">CECYTEZ</p>
+                    <p data-key="edu2Desc">Título técnico que me proporcionó una base sólida en hardware, redes, y sistemas operativos desde una etapa temprana, complementando mi perfil de desarrollador de software con un entendimiento profundo de la infraestructura subyacente.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h3 class="section-title reveal"><i class="fas fa-cogs"></i><span data-key="skillsTitle">Stack Tecnológico</span></h3>
+            <div class="skills-grid">
+                <div class="skill-category reveal">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2A10,10,0,0,0,2,12A10,10,0,0,0,12,22A10,10,0,0,0,22,12A10,10,0,0,0,12,2ZM10.88,15.29L7.3,11.71a.5.5,0,0,1,.71-.71L11.23,14.2,16,9.44a.5.5,0,0,1,.7.71Z" opacity="0.4"/><path d="M12.75,8.5a.5.5,0,0,0-.5-.5H9.5a.5.5,0,0,0,0,1h2.75A.5.5,0,0,0,12.75,8.5Z"/><path d="M12,7.5a.5.5,0,0,0,.5-.5V4.5a.5.5,0,0,0-1,0v2.5A.5.5,0,0,0,12,7.5Z"/><path d="M14.5,9.5a.5.5,0,0,0,0-1H12a.5.5,0,0,0,0,1Z"/><path d="M12,18.5a.5.5,0,0,0,.5-.5v-2.5a.5.5,0,0,0-1,0V18A.5.5,0,0,0,12,18.5Z"/></svg>
+                        Backend (JVM)
+                    </h4>
+                    <ul>
+                        <li>Java 17 & Jakarta EE 10</li>
+                        <li>API RESTful (JAX-RS)</li>
+                        <li>Persistencia (JPA & Hibernate)</li>
+                        <li>Inyección de Dependencias (CDI)</li>
+                        <li>Servidor de Aplicaciones WildFly</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal" style="transition-delay: 0.1s;">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5.72,14.47a.5.5,0,0,0-.44.25L3,19.4a.5.5,0,0,0,.44.75h1.63a.5.5,0,0,0,.44-.25l2.25-4.68a.5.5,0,0,0-.44-.75Z"/><path d="M18.28,14.47a.5.5,0,0,0-.44.75l2.25,4.68a.5.5,0,0,0,.44.25h1.63a.5.5,0,0,0,.44-.75l-2.29-4.68a.5.5,0,0,0-.47-.25Z"/><path d="M12.38,3.25,9.88,8.25h4.25l-2.5-5a.5.5,0,0,0-.87,0Z" opacity="0.4"/><path d="M16.88,8.25,12.38,17.25a.5.5,0,0,1-.88,0L7.13,8.25,4.88,12.75h14.25Z"/></svg>
+                        Backend (Web)
+                    </h4>
+                    <ul>
+                        <li>PHP & WordPress (Mid-Level)</li>
+                        <li>Desarrollo de Temas y Plugins</li>
+                        <li>NestJS (TypeScript)</li>
+                        <li>MySQL / PostgreSQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal" style="transition-delay: 0.2s;">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.45,8.44l-5.69-3.28a3.48,3.48,0,0,0-3.52,0L4.55,8.44A3.49,3.49,0,0,0,2.75,11.5v5a3.49,3.49,0,0,0,1.8,3.06l5.69,3.28a3.48,3.48,0,0,0,3.52,0l5.69-3.28A3.49,3.49,0,0,0,21.25,16.5v-5A3.49,3.49,0,0,0,19.45,8.44Zm-7,10.37a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,12.45,18.81Z" opacity="0.4"/><path d="M12.45,11a3.79,3.79,0,1,0,3.79,3.79A3.8,3.8,0,0,0,12.45,11Zm0,5.58a1.79,1.79,0,1,1,1.79-1.79A1.8,1.8,0,0,1,12.45,16.58Z"/></svg>
+                        DevOps y Servidores
+                    </h4>
+                    <ul>
+                        <li>Docker & Docker-Compose</li>
+                        <li>Nginx (Reverse Proxy & SSL)</li>
+                        <li>Git & Git Flow</li>
+                        <li>CI/CD (Conceptos GitLab)</li>
+                        <li>Administración de VPS Linux</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal" style="transition-delay: 0.3s;">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5,2h-7A3.5,3.5,0,0,0,5,5.5v13A3.5,3.5,0,0,0,8.5,22h7a3.5,3.5,0,0,0,3.5-3.5v-13A3.5,3.5,0,0,0,15.5,2Zm-3,18a1,1,0,1,1,1-1A1,1,0,0,1,12.5,20Zm4-4.5a.5.5,0,0,1-.5.5h-7a.5.5,0,0,1,0-1h7A.5.5,0,0,1,16.5,15.5Z" opacity="0.4"/><rect x="8" y="5" width="8" height="8" rx="1.5"/></svg>
+                        Frontend & Móvil
+                    </h4>
+                    <ul>
+                        <li>Flutter para Android & iOS</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+) & React</li>
+                        <li>JSF & PrimeFaces</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h3 class="section-title reveal"><i class="fas fa-paper-plane"></i><span data-key="contactTitle">Contacto</span></h3>
+            <p class="reveal" data-key="contactDesc">
+                Actualmente estoy abierto a nuevos desafíos y oportunidades de colaboración. Si tienes un proyecto en mente o crees que podemos construir algo grande juntos, no dudes en contactarme.
+            </p>
+            <div class="reveal">
+                <a href="mailto:mauriciojuaries22@gmail.com" class="button" data-key="contactCTA">Envíame un correo</a>
+            </div>
+        </section>
+        
+        <footer>
+            <p data-key="footerText">&copy; 2026 Mauricio Juanes - Diseñado y construido por mí. Inspirado en el café y el buen código.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const translations = {
+                es: {
+                    navExperience: "Experiencia",
+                    navProjects: "Proyectos",
+                    navEducation: "Educación",
+                    navSkills: "Habilidades",
+                    navContact: "Contacto",
+                    heroBio: "Líder tecnológico con 5+ años de experiencia diseñando e implementando arquitecturas backend escalables. Experto en <strong>Node.js</strong>, gestión de BBDD y APIs <strong>RESTful</strong>, guiando equipos para optimizar procesos, impulsar la eficiencia y elevar la satisfacción del cliente en entornos de alta demanda como MasFast.",
+                    heroCTA: "Hablemos",
+                    experienceTitle: "Experiencia Profesional",
+                    exp1Title: "Fundador, CEO & CTO - MasFast",
+                    exp1Date: "(Abril 2020 - Presente)",
+                    exp1Desc: "Lideré la estrategia y ejecución integral del negocio. Como <strong>CTO</strong>, diseñé y desarrollé la arquitectura full-stack (Flutter, NestJS, Docker). Como <strong>CEO</strong>, gestioné operaciones, desarrollo de negocio, marketing y relaciones con clientes y restaurantes asociados, logrando +25,000 entregas y +1,000 descargas.",
+                    tagBizDev: "Desarrollo de Negocio",
+                    viewWebsite: " Sitio Web",
+                    viewOnPlayStore: " Ver en Play Store",
+                    exp2Title: "Desarrollador de Software Mid-Level - INFOTEC",
+                    exp2Date: "(Mayo 2025 - Presente)",
+                    exp2Desc: "Desarrollo de software en la Agencia Digital del Gobierno de México. Mi rol tiene una doble especialización: mantengo y evoluciono sistemas críticos con <strong>PHP/WordPress</strong> y construyo nuevas soluciones empresariales robustas utilizando el stack de <strong>Java/Jakarta EE</strong>.",
+                    projectsTitle: "Proyectos Relevantes",
+                    proj1Title: "ReflejArte - E-commerce (Proyecto Titulación)",
+                    proj1Desc: "Desarrollo de backend con WordPress y WooCommerce para una tienda de artes plásticas. Implementación de la API REST de WordPress para sincronizar con la app móvil (Flutter), demostrando experiencia en e-commerce y integración con plataformas móviles.",
+                    proj2Title: "YakTask API - Laboratorio Jakarta EE",
+                    proj2Desc: "Microservicio RESTful para gestión de tareas, mi \"gimnasio técnico\" para dominar el stack empresarial de Jakarta EE 10. Aplico rigurosamente las mejores prácticas: Patrón Repositorio, DTOs, validación de datos y un flujo profesional con Git Flow.",
+                    viewCode: " Ver Código",
+                    educationTitle: "Educación",
+                    edu1Title: "Ingeniería en Sistemas Computacionales",
+                    edu1School: "Instituto Politécnico Nacional (IPN) - UPIIZ",
+                    edu1Desc: "Graduado de una de las instituciones de ingeniería más prestigiosas y exigentes de México y América Latina. Formación integral en ciencias de la computación, desarrollo de software, y sistemas de información.",
+                    edu2Title: "Bachillerato Técnico en Soporte y Mantenimiento",
+                    edu2School: "CECYTEZ",
+                    edu2Desc: "Título técnico que me proporcionó una base sólida en hardware, redes, y sistemas operativos desde una etapa temprana, complementando mi perfil de desarrollador de software con un entendimiento profundo de la infraestructura subyacente.",
+                    skillsTitle: "Stack Tecnológico",
+                    contactTitle: "Contacto",
+                    contactDesc: "Actualmente estoy abierto a nuevos desafíos y oportunidades de colaboración. Si tienes un proyecto en mente o crees que podemos construir algo grande juntos, no dudes en contactarme.",
+                    contactCTA: "Envíame un correo",
+                    footerText: `&copy; ${new Date().getFullYear()} Mauricio Juanes - Diseñado y construido por mí. Inspirado en el café y el buen código.`
+                },
+                en: {
+                    navExperience: "Experience",
+                    navProjects: "Projects",
+                    navEducation: "Education",
+                    navSkills: "Skills",
+                    navContact: "Contact",
+                    heroBio: "Tech lead with 5+ years of experience designing and implementing scalable backend architectures. Expert in <strong>Node.js</strong>, database management, and <strong>RESTful</strong> APIs, guiding teams to optimize processes, drive efficiency, and enhance customer satisfaction in high-demand environments like MasFast.",
+                    heroCTA: "Let's Talk",
+                    experienceTitle: "Professional Experience",
+                    exp1Title: "Founder, CEO & CTO - MasFast",
+                    exp1Date: "(April 2020 - Present)",
+                    exp1Desc: "Led the entire business strategy and execution. As <strong>CTO</strong>, I designed and developed the full-stack architecture (Flutter, NestJS, Docker). As <strong>CEO</strong>, I managed operations, business development, marketing, and relationships with clients and partner restaurants, achieving +25,000 deliveries and +1,000 downloads.",
+                    tagBizDev: "Business Development",
+                    viewWebsite: " Website",
+                    viewOnPlayStore: " View on Play Store",
+                    exp2Title: "Mid-Level Software Developer - INFOTEC",
+                    exp2Date: "(May 2025 - Present)",
+                    exp2Desc: "Software development at the Digital Agency of the Mexican Government. My role involves a dual specialization: maintaining and evolving critical systems with <strong>PHP/WordPress</strong> and building new robust enterprise solutions using the <strong>Java/Jakarta EE</strong> stack.",
+                    projectsTitle: "Relevant Projects",
+                    proj1Title: "ReflejArte - E-commerce (Thesis Project)",
+                    proj1Desc: "Backend development with WordPress and WooCommerce for a fine arts store. Implemented the WordPress REST API to sync with the mobile app (Flutter), demonstrating expertise in e-commerce and mobile platform integration.",
+                    proj2Title: "YakTask API - Jakarta EE Lab",
+                    proj2Desc: "RESTful microservice for task management, my \"technical gym\" for mastering the Jakarta EE 10 enterprise stack. I rigorously apply industry best practices: Repository Pattern, DTOs, data validation, and a professional workflow with Git Flow.",
+                    viewCode: " View Code",
+                    educationTitle: "Education",
+                    edu1Title: "B.S. in Computer Systems Engineering",
+                    edu1School: "National Polytechnic Institute (IPN) - UPIIZ",
+                    edu1Desc: "Graduated from one of the most prestigious and demanding engineering institutions in Mexico and Latin America. Comprehensive training in computer science, software development, and information systems.",
+                    edu2Title: "Technical Degree in IT Support and Maintenance",
+                    edu2School: "CECYTEZ",
+                    edu2Desc: "A technical degree that provided me with a solid foundation in hardware, networks, and operating systems from an early stage, complementing my software developer profile with a deep understanding of the underlying infrastructure.",
+                    skillsTitle: "Tech Stack",
+                    contactTitle: "Contact",
+                    contactDesc: "I am currently open to new challenges and collaboration opportunities. If you have a project in mind or believe we can build something great together, do not hesitate to contact me.",
+                    contactCTA: "Send me an email",
+                    footerText: `&copy; ${new Date().getFullYear()} Mauricio Juanes - Designed and built by me. Fueled by coffee and clean code.`
+                }
+            };
+            
+            // --- Selectores y Variables de Estado ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const langToggle = document.getElementById('lang-toggle');
+            const body = document.body;
+            const typedTextSpan = document.getElementById("typed");
+            let textArray = [];
+            let currentLang = localStorage.getItem('lang') || 'es';
+
+            // --- Lógica de Animación de "Máquina de Escribir" ---
+            function updateTypedStrings() {
+                textArray = currentLang === 'es' 
+                    ? ["Líder Técnico", "Desarrollador Full-Stack", "Fundador de MasFast"]
+                    : ["Tech Lead", "Full-Stack Developer", "Founder of MasFast"];
+            }
+
+            // --- Lógica de UI (Tema e Idioma) ---
+            const applyTheme = (theme) => {
+                body.className = '';
+                if (theme) body.classList.add(theme);
+            };
+            
+            const setLanguage = (lang) => {
+                document.querySelectorAll('[data-key]').forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (translations[lang][key]) {
+                        element.innerHTML = translations[lang][key];
+                    }
+                });
+                document.documentElement.lang = lang;
+                langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
+                localStorage.setItem('lang', lang);
+                currentLang = lang;
+                updateTypedStrings();
+            };
+
+            // --- Inicialización ---
+            let savedTheme = localStorage.getItem('theme');
+            if (!savedTheme) {
+                savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : '';
+            }
+            applyTheme(savedTheme);
+            setLanguage(currentLang);
+
+            // --- Event Listeners ---
+            themeToggle.addEventListener('click', () => {
+                let newTheme = body.classList.contains('dark-mode') ? '' : 'dark-mode';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+            langToggle.addEventListener('click', () => {
+                const newLang = currentLang === 'es' ? 'en' : 'es';
+                setLanguage(newLang);
+            });
+            
+            // --- Lógica de la Barra de Navegación ---
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // --- Lógica de Animación de "Máquina de Escribir" (continuación) ---
+            const typingDelay = 100, erasingDelay = 50, newTextDelay = 2000;
+            let textArrayIndex = 0, charIndex = 0;
+
+            function type() {
+                if (charIndex < textArray[textArrayIndex].length) {
+                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex++);
+                    setTimeout(type, typingDelay);
+                } else {
+                    setTimeout(erase, newTextDelay);
+                }
+            }
+
+            function erase() {
+                if (charIndex > 0) {
+                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, --charIndex);
+                    setTimeout(erase, erasingDelay);
+                } else {
+                    textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                    setTimeout(type, typingDelay + 1100);
+                }
+            }
+            
+            if(textArray.length) setTimeout(type, newTextDelay + 250);
+
+            // --- Lógica de Scroll Reveal ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
+
