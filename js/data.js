@@ -1,70 +1,113 @@
 /**
  * Portafolio Mauricio Juanes - Módulo de Datos y Traducciones
  * Contenido modular estructurado en Español (es) e Inglés (en)
+ * Prioridades: 1) INFOTEC, 2) MasFast, 3) IA & Chatbots
  */
 
 const portfolioData = {
     es: {
         nav: {
+            logo: "Mauricio Juanes",
             experience: "Experiencia",
             projects: "Proyectos",
-            education: "Educación",
             awards: "Reconocimientos",
+            education: "Educación",
             skills: "Habilidades",
             contact: "Contacto"
         },
         hero: {
-            title: "Mauricio Juanes",
+            initials: "MJ",
+            location: "Zacatecas, México",
+            title: "José Mauricio Juanes Martínez",
             typedStrings: [
                 "Desarrollador Full-Stack",
-                "Frontend & UI/UX",
+                "Frontend & UI/UX Specialist",
                 "Arquitecto de Soluciones IA",
-                "Fundador & CTO de MasFast"
+                "Fundador & CTO en MasFast"
             ],
-            bio: "Ingeniero en Sistemas Computacionales (IPN UPIIZ) y <strong>Desarrollador Full-Stack</strong> con más de 5 años de experiencia. Especializado en construcción de plataformas gubernamentales de alto impacto (<strong>INFOTEC</strong>), arquitecturas escalables y reactivas (<strong>MasFast</strong>) y ecosistemas multi-agente con <strong>Inteligencia Artificial</strong> y seguridad de tokens.",
+            bio: "Ingeniero en Sistemas Computacionales (IPN UPIIZ) y <strong>Desarrollador Full-Stack</strong> con sólida base frontend. Especializado en la construcción de plataformas gubernamentales a gran escala (<strong>INFOTEC</strong>), ecosistemas de logística y delivery reactivos (<strong>MasFast</strong>) y arquitecturas multi-agente con <strong>Inteligencia Artificial</strong>, multimodalidad y control de acceso estricto para protección de tokens.",
             cta: "Hablemos",
-            cvButton: "Ver CV / Perfil"
+            projectsCta: "Ver Proyectos"
         },
         experience: {
             sectionTitle: "Experiencia Profesional",
             items: [
                 {
                     id: "infotec",
-                    title: "Desarrollador Full-Stack & Frontend UI/UX",
+                    title: "Desarrollador Full-Stack · Frontend UI/UX",
                     company: "INFOTEC",
-                    period: "Mayo 2025 — Presente",
+                    companyType: "Centro de Investigación e Innovación en TIC (Gobierno de México)",
+                    period: "2025 — Presente",
                     location: "México (Híbrido)",
-                    description: "Desarrollo de software en el Centro de Investigación e Innovación en TIC del Gobierno de México. Diseño y construcción de interfaces críticas para plataformas a gran escala como la <strong>Plataforma Nacional Catastral (PNC)</strong> para más de 900 municipios y la <strong>Bandeja de Trámites del Registro Público de la Propiedad (RPP)</strong>. Optimización integral del motor de generación de reportes y documentos PDF con una aceleración del <strong>75%</strong> en tiempos de respuesta, integración ágil de APIs REST y traslación precisa de diseño Figma a código de producción accesible y responsivo.",
+                    badge: "1.er Lugar · Escala Nacional",
+                    intro: "Diseño y desarrollo frontend/UI/UX para sistemas críticos del Gobierno de México con alto volumen de usuarios e impacto ciudadano:",
+                    highlights: [
+                        "<strong>PNC (Plataforma Nacional Catastral):</strong> Diseño e implementación de interfaces modernas para la plataforma catastral nacional, con alcance y despliegue en <strong>+900 municipios</strong> y millones de usuarios en producción.",
+                        "<strong>RPP (Registro Público de la Propiedad):</strong> Construcción desde cero de la <strong>Bandeja de Trámites del Ciudadano</strong> con búsqueda en tiempo real, filtros dinámicos por estado, tarjetas interactivas y diseño responsivo accesible.",
+                        "<strong>Flujos Interactivos de Trámites:</strong> Desarrollo paso a paso de la lógica de selección y gestión dinámica para solicitudes ciudadanas (copias certificadas y certificaciones registrales).",
+                        "<strong>Optimización de Motor de PDFs:</strong> Reducción del tiempo de generación y renderizado documental de <strong>8s a 2s (75% de aceleración)</strong>.",
+                        "<strong>Figma to Code:</strong> Traslación pixel-perfect de especificaciones de diseño a código HTML5/CSS3 modular y JavaScript (ES6+)."
+                    ],
                     tags: ["JavaScript (ES6+)", "UI/UX Figma", "Plataformas de Gobierno", "Optimización PDF", "Java / Jakarta EE", "APIs REST", "Git Flow"],
-                    imageText: "INFOTEC",
-                    badge: "1.er Lugar de Prioridad"
+                    links: []
                 },
                 {
                     id: "masfast",
                     title: "Fundador, CEO & CTO",
                     company: "MasFast",
-                    period: "Abril 2020 — Presente",
+                    companyType: "Plataforma de Logística & Delivery",
+                    period: "2020 — Presente",
                     location: "Zacatecas, México",
-                    description: "Liderazgo técnico y dirección general de la plataforma de logística y delivery de última milla. Diseño e implementación de la arquitectura full-stack reactiva con <strong>NestJS</strong>, <strong>Docker</strong>, <strong>PostgreSQL</strong> y <strong>WebSockets</strong> para rastreo satelital GPS en tiempo real. Desarrollo de la app móvil para usuarios y repartidores en <strong>Flutter</strong> (+1,000 descargas y +35,000 entregas completadas). Startup seleccionada para el programa de aceleración <strong>PotencIA MX</strong> (Meta + Tecnológico de Monterrey) y Top 20 nacional en <strong>Posible México</strong>.",
+                    badge: "2.º Lugar · Startup & Escalabilidad",
+                    intro: "Dirección técnica y arquitectura integral de plataforma de última milla con <strong>+35,000 pedidos completados</strong> y +1,000 descargas activas:",
+                    highlights: [
+                        "<strong>Arquitectura Backend Reactiva:</strong> Diseño y despliegue del core en <strong>NestJS</strong>, <strong>PostgreSQL</strong>, <strong>Docker</strong> y <strong>WebSockets</strong> para tracking satelital GPS en tiempo real de repartidores.",
+                        "<strong>Aplicaciones Móviles:</strong> Desarrollo de aplicaciones para clientes y repartidores en <strong>Flutter</strong> para Android e iOS con integración de pasarelas de pago y notificaciones push.",
+                        "<strong>Aceleración PotencIA MX (2025–2026):</strong> Startup seleccionada entre las más innovadoras del país para el programa de aceleración impulsado por <strong>Meta y el Tec de Monterrey</strong> con enfoque en IA.",
+                        "<strong>Posible México:</strong> Clasificada en el <strong>Top 20 nacional</strong> entre más de 300 proyectos tecnológicos evaluados por Fundación Televisa."
+                    ],
                     tags: ["NestJS", "Flutter", "TypeScript", "WebSockets", "Docker", "PostgreSQL", "GPS Tracking"],
-                    imageText: "MasFast",
                     links: [
                         { label: "Sitio Web", url: "https://masfast.app", icon: "fas fa-globe" },
-                        { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.masfast", icon: "fab fa-google-play" }
+                        { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.talzzoft.masfast", icon: "fab fa-google-play" }
                     ]
                 },
                 {
                     id: "ai-chatbots",
                     title: "Arquitecto de Soluciones IA & Chatbots Omnicanal",
                     company: "Talzzoft / Proyectos de IA",
+                    companyType: "Ecosistemas Autónomos & Multi-Agente",
                     period: "2024 — Presente",
                     location: "Remoto",
-                    description: "Diseño y despliegue de ecosistemas conversacionales multi-agente basados en <strong>Domain-Driven Design (DDD)</strong> para WhatsApp (BuilderBot + Baileys) y Telegram (GrammY). Integración de modelos LLM (Llama 3.3 70B vía Groq, Gemini CLI), notas de voz con transcripción automática vía <strong>Whisper ASR</strong> y visión computacional. Implementación de control de acceso estricto mediante <strong>lista blanca dinámica (whitelist)</strong> multi-canal para protección contra ataques y mitigación de abuso de tokens.",
-                    tags: ["Multi-Agent AI", "Llama 3.3 & Gemini", "BuilderBot", "GrammY", "Whisper ASR", "Whitelist Security", "DDD"],
-                    imageText: "IA & Bots",
+                    badge: "3.er Lugar · Inteligencia Artificial",
+                    intro: "Diseño y despliegue de agentes inteligentes multimodal con integración omnicanal y blindaje de seguridad:",
+                    highlights: [
+                        "<strong>Arquitectura Multi-Agente (DDD):</strong> Ecosistema modular en Domain-Driven Design para <strong>WhatsApp</strong> (BuilderBot + Baileys) y <strong>Telegram</strong> (GrammY) con persistencia en PostgreSQL.",
+                        "<strong>Orquestación LLM & Voz:</strong> Integración de modelos Llama 3.3 70B vía Groq y Gemini CLI, con transcripción de notas de voz en tiempo real usando <strong>Whisper ASR</strong> y análisis visual.",
+                        "<strong>Seguridad & Control de Acceso:</strong> Blindaje mediante <strong>lista blanca dinámica (whitelist)</strong> multi-canal para mitigar abuso de tokens y restringir consumo de cómputo a remitentes autorizados.",
+                        "<strong>Autenticación & Integraciones:</strong> Conexión con OAuth 2.0 (TickTick, Google), JWT con Passport y roles en NestJS, y sincronización de herramientas en background."
+                    ],
+                    tags: ["Multi-Agent AI", "Llama 3.3 & Gemini", "BuilderBot", "GrammY", "Whisper ASR", "Whitelist Security", "OAuth 2.0"],
                     links: [
                         { label: "GitHub Perfil", url: "https://github.com/JMauricioJuanesM", icon: "fab fa-github" }
                     ]
+                },
+                {
+                    id: "talzzoft",
+                    title: "Fundador & Desarrollador de Soluciones Web",
+                    company: "Talzzoft",
+                    companyType: "Desarrollo Web & E-Commerce",
+                    period: "2014 — Presente",
+                    location: "Zacatecas, México",
+                    badge: "Trayectoria",
+                    intro: "Consultoría y desarrollo a medida de productos digitales para empresas y comercios:",
+                    highlights: [
+                        "<strong>E-Commerce & Sitios a Medida:</strong> Creación de plataformas de comercio electrónico, tiendas WordPress/WooCommerce y landing pages de alto rendimiento.",
+                        "<strong>Integraciones API REST:</strong> Conexión de pasarelas de pago, servicios de facturación electrónica y herramientas de administración interna.",
+                        "<strong>Mantenimiento & Despliegue:</strong> Configuración de servidores Linux (Ubuntu), Nginx, certificados SSL y optimización de velocidad de carga."
+                    ],
+                    tags: ["JavaScript", "WordPress / WooCommerce", "APIs REST", "PHP", "Nginx", "Linux"],
+                    links: []
                 }
             ]
         },
@@ -72,37 +115,40 @@ const portfolioData = {
             sectionTitle: "Proyectos Destacados",
             items: [
                 {
-                    title: "PNC & RPP — Plataformas Nacionales",
-                    subtitle: "INFOTEC",
-                    description: "Sistemas gubernamentales de gestión catastral y registral con alcance para +900 municipios. Implementación de bandejas de trámites ciudadanos, alta fidelidad en UI/UX y optimización del motor de generación documental.",
-                    tags: ["Frontend", "UI/UX", "APIs REST", "Jakarta EE", "Optimización PDF"],
-                    imageText: "PNC & RPP"
+                    title: "RPP — Bandeja de Trámites Ciudadanos",
+                    category: "Gobierno / En Producción",
+                    description: "Interfaz de usuario construida desde cero para la gestión de trámites en el Registro Público de la Propiedad. Búsqueda en vivo, filtrado dinámico por estado, tarjetas interactivas y emisión acelerada de documentos.",
+                    tags: ["HTML5 / CSS3", "JavaScript (ES6+)", "Fetch API", "UI/UX", "Optimización PDF"]
                 },
                 {
-                    title: "MasFast Platform & Apps",
-                    subtitle: "Logística y Delivery",
-                    description: "Ecosistema completo de última milla con backend en NestJS, tracking GPS en vivo con WebSockets, pasarelas de pago y aplicaciones móviles multiplataforma en Flutter.",
-                    tags: ["NestJS", "Flutter", "WebSockets", "Docker", "PostgreSQL"],
-                    imageText: "MasFast App",
+                    title: "PNC — Plataforma Nacional Catastral",
+                    category: "Escala Nacional",
+                    description: "Diseño CSS, estilos modulares y componentes de UI en producción para una de las plataformas catastrales gubernamentales más grandes del país, sirviendo a más de 900 municipios.",
+                    tags: ["CSS3 Modular", "UI/UX", "Figma to Code", "Responsive Design"]
+                },
+                {
+                    title: "MasFast — Plataforma & App de Delivery",
+                    category: "Logística & Escalabilidad",
+                    description: "Ecosistema integral de última milla con +35,000 entregas. Backend en NestJS con WebSockets para tracking satelital en tiempo real, base de datos PostgreSQL y app móvil en Flutter.",
+                    tags: ["NestJS", "Flutter", "TypeScript", "WebSockets", "Docker", "PostgreSQL"],
                     links: [
-                        { label: "Ver en Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.masfast", icon: "fab fa-google-play" }
+                        { label: "Sitio Web", url: "https://masfast.app", icon: "fas fa-globe" },
+                        { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.masfast", icon: "fab fa-google-play" }
                     ]
                 },
                 {
-                    title: "Asistente IA Omnicanal & RestaBot",
-                    subtitle: "Multi-Agente & Automatización",
-                    description: "Sistema inteligente con reconocimiento de audio, ejecución segura de tareas, autorización por lista blanca dinámica y orquestación multimodal para empresas y atención ciudadana.",
-                    tags: ["Node.js", "Llama 3.3", "Whisper", "BuilderBot", "GrammY", "Seguridad Tokens"],
-                    imageText: "RestaBot AI"
+                    title: "RestaBot & Asistente IA Omnicanal",
+                    category: "Inteligencia Artificial",
+                    description: "Ecosistema conversacional multi-agente con transcripción Whisper ASR de notas de voz, autorización de acceso estricta por lista blanca de tokens, integración con Telegram y WhatsApp.",
+                    tags: ["Node.js", "Llama 3.3", "Whisper ASR", "BuilderBot", "GrammY", "Seguridad Tokens"]
                 },
                 {
-                    title: "ReflejArte — E-commerce & Mobile",
-                    subtitle: "Proyecto de Titulación",
-                    description: "Tienda online de artes plásticas con backend WordPress/WooCommerce y sincronización bidireccional vía REST API con app móvil en Flutter.",
+                    title: "ReflejArte — App & Tienda Online",
+                    category: "E-Commerce & Titulación",
+                    description: "Tienda digital de obras de arte con backend WordPress/WooCommerce y sincronización bidireccional vía REST API con app móvil en Flutter publicada en Google Play Store (Proyecto de titulación IPN).",
                     tags: ["WordPress", "WooCommerce", "Flutter", "REST API", "PHP"],
-                    imageText: "ReflejArte",
                     links: [
-                        { label: "Ver en Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.reflejarte", icon: "fab fa-google-play" }
+                        { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.reflejarte", icon: "fab fa-google-play" }
                     ]
                 }
             ]
@@ -111,50 +157,54 @@ const portfolioData = {
             sectionTitle: "Reconocimientos & Aceleración",
             items: [
                 {
-                    title: "Aceleradora PotencIA MX (2025–2026)",
+                    title: "PotencIA MX (2025–2026)",
                     entity: "Meta & Tecnológico de Monterrey",
-                    description: "Seleccionado entre las startups tecnológicas más innovadoras de México para el programa de aceleración impulsado por Meta y el Tec de Monterrey con enfoque en Inteligencia Artificial."
+                    description: "Startup seleccionada entre las más innovadoras del país para el programa de aceleración de Inteligencia Artificial impulsado por Meta y el Tec de Monterrey.",
+                    icon: "fas fa-award"
                 },
                 {
                     title: "Top 20 Posible México (2022)",
                     entity: "Fundación Televisa",
-                    description: "Reconocimiento a MasFast como uno de los 20 mejores proyectos de emprendimiento tecnológico y logística de alto impacto en el país."
+                    description: "Seleccionado en el Top 20 nacional entre más de 300 proyectos de emprendimiento tecnológico y logística evaluados en México.",
+                    icon: "fas fa-medal"
                 },
                 {
-                    title: "2.º Lugar Nacional InnovaHack (2019)",
-                    entity: "InnovaHack",
-                    description: "Segundo lugar en competencia nacional de desarrollo tecnológico, prototipado acelerado y resolución de retos de ingeniería."
+                    title: "2.º Lugar — InnovaHack (2019)",
+                    entity: "COZCyT & InnovaHack",
+                    description: "Segundo lugar en hackathon estatal de innovación tecnológica y desarrollo acelerado de soluciones de software.",
+                    icon: "fas fa-trophy"
                 },
                 {
                     title: "Top 11 Hackathon Campus Party (2017)",
                     entity: "Campus Party México",
-                    description: "Finalista en el hackathon tecnológico más grande de México mediante desarrollo de soluciones de software en tiempo récord."
+                    description: "Finalista en el hackathon tecnológico más grande de México mediante desarrollo de soluciones de software en tiempo récord.",
+                    icon: "fas fa-star"
                 }
             ]
         },
         education: {
-            sectionTitle: "Educación",
+            sectionTitle: "Educación & Formación",
             items: [
                 {
                     title: "Ingeniería en Sistemas Computacionales",
                     school: "Instituto Politécnico Nacional (IPN) — UPIIZ",
                     period: "2019 — 2026 (Titulación en trámite)",
-                    description: "Formación de excelencia en ciencias de la computación, desarrollo de software empresarial, arquitectura de sistemas y gestión de proyectos tecnológicos en una de las instituciones líderes de Latinoamérica.",
-                    imageText: "IPN UPIIZ"
+                    description: "Formación de alto nivel en ciencias de la computación, desarrollo de software empresarial, arquitectura de sistemas y gestión de proyectos tecnológicos en una de las instituciones líderes del país.",
+                    tag: "IPN UPIIZ"
+                },
+                {
+                    title: "Formación de Idiomas — Inglés B1/B2",
+                    school: "Centro de Idiomas UAZ",
+                    period: "Certificación Continua",
+                    description: "Nivel B1 consolidado en camino a acreditación B2. Comunicación técnica fluida para lectura de documentación, redacción y colaboración en equipos multidisciplinarios e internacionales.",
+                    tag: "Inglés B1 / B2"
                 },
                 {
                     title: "Bachillerato Técnico en Soporte y Mantenimiento",
                     school: "CECYTEZ",
                     period: "2014 — 2017",
-                    description: "Bases sólidas en infraestructura física y lógica, redes de datos, mantenimiento preventivo/correctivo y administración de sistemas operativos.",
-                    imageText: "CECYTEZ"
-                },
-                {
-                    title: "Formación de Idiomas — Inglés B1/B2",
-                    school: "Centro de Idiomas UAZ",
-                    period: "Certificación continua",
-                    description: "Nivel B1 consolidado en camino a acreditación B2. Comunicación técnica fluida para lectura de documentación, redacción y colaboración en equipos internacionales.",
-                    imageText: "Inglés B1/B2"
+                    description: "Bases sólidas en infraestructura de hardware, redes de datos, mantenimiento preventivo/correctivo y administración de sistemas operativos.",
+                    tag: "CECYTEZ"
                 }
             ]
         },
@@ -168,7 +218,7 @@ const portfolioData = {
                         "JavaScript (ES6+) & TypeScript",
                         "HTML5 Semántico & CSS3 Modular",
                         "Figma to Code (Pixel-Perfect UI)",
-                        "React & Responsive Design",
+                        "React & Responsive Web Design",
                         "Flutter para Android e iOS"
                     ]
                 },
@@ -202,7 +252,7 @@ const portfolioData = {
                         "Docker & Docker-Compose",
                         "Nginx Reverse Proxy & SSL",
                         "Git & Git Flow / GitHub Actions",
-                        "Administración de Servidores Linux (Ubuntu)"
+                        "Administración Linux (Ubuntu Server)"
                     ]
                 }
             ]
@@ -211,29 +261,32 @@ const portfolioData = {
             sectionTitle: "Contacto",
             description: "¿Tienes un proyecto en mente, buscas un perfil full-stack para tu equipo o te interesa colaborar en soluciones de software e IA? Escríbeme y conectemos.",
             buttonText: "Enviar Correo Electrónico",
-            footerText: `&copy; ${new Date().getFullYear()} Mauricio Juanes — Diseñado y construido de forma modular. Código limpio y alto rendimiento.`
+            footerText: `&copy; ${new Date().getFullYear()} José Mauricio Juanes Martínez — Diseñado con elegancia, modularidad y alto rendimiento.`
         }
     },
     en: {
         nav: {
+            logo: "Mauricio Juanes",
             experience: "Experience",
             projects: "Projects",
-            education: "Education",
             awards: "Awards",
+            education: "Education",
             skills: "Skills",
             contact: "Contact"
         },
         hero: {
-            title: "Mauricio Juanes",
+            initials: "MJ",
+            location: "Zacatecas, Mexico",
+            title: "José Mauricio Juanes Martínez",
             typedStrings: [
                 "Full-Stack Developer",
-                "Frontend & UI/UX",
+                "Frontend & UI/UX Specialist",
                 "AI Solutions Architect",
                 "Founder & CTO at MasFast"
             ],
-            bio: "Computer Systems Engineer (IPN UPIIZ) and <strong>Full-Stack Developer</strong> with 5+ years of experience. Specialized in building high-impact public sector platforms (<strong>INFOTEC</strong>), scalable reactive architectures (<strong>MasFast</strong>), and multi-agent <strong>Artificial Intelligence</strong> ecosystems with token authorization.",
+            bio: "Computer Systems Engineer (IPN UPIIZ) and <strong>Full-Stack Developer</strong> with solid frontend expertise. Specialized in building mission-critical public sector platforms (<strong>INFOTEC</strong>), scalable reactive logistics ecosystems (<strong>MasFast</strong>), and multi-agent <strong>Artificial Intelligence</strong> architectures with multimodal support and token authorization security.",
             cta: "Let's Talk",
-            cvButton: "View CV / Profile"
+            projectsCta: "View Projects"
         },
         experience: {
             sectionTitle: "Professional Experience",
@@ -242,39 +295,78 @@ const portfolioData = {
                     id: "infotec",
                     title: "Full-Stack & Frontend UI/UX Developer",
                     company: "INFOTEC",
-                    period: "May 2025 — Present",
+                    companyType: "National ICT Research & Innovation Center (Gov of Mexico)",
+                    period: "2025 — Present",
                     location: "Mexico (Hybrid)",
-                    description: "Software engineering at Mexico's National ICT Research and Innovation Center. Designing and building critical web interfaces for nationwide enterprise systems, including the <strong>National Cadastral Platform (PNC)</strong> for 900+ municipalities and the <strong>Citizen Procedures Portal for Property Registry (RPP)</strong>. Engineered an end-to-end report and PDF generation optimization resulting in a <strong>75% performance boost</strong>, agile REST API integration, and pixel-perfect translation from Figma prototypes to accessible, responsive production code.",
-                    tags: ["JavaScript (ES6+)", "UI/UX Figma", "Government Platforms", "PDF Engine Optimization", "Java / Jakarta EE", "REST APIs", "Git Flow"],
-                    imageText: "INFOTEC",
-                    badge: "Top Priority"
+                    badge: "Top Priority · Nationwide Scale",
+                    intro: "Frontend and UI/UX engineering for high-impact mission-critical platforms in Mexico's public sector:",
+                    highlights: [
+                        "<strong>PNC (National Cadastral Platform):</strong> UI/UX design and production implementation for nationwide cadastral management across <strong>+900 municipalities</strong> and millions of citizens.",
+                        "<strong>RPP (Citizen Procedures Portal):</strong> Built the citizen procedure dashboard from scratch with real-time search, dynamic status filtering, interactive cards, and accessible responsive design.",
+                        "<strong>Interactive Citizen Workflows:</strong> Developed end-to-end multi-step dynamic flows for certified document and property registry requests.",
+                        "<strong>PDF Engine Optimization:</strong> Accelerated document rendering and generation pipeline from <strong>8s down to 2s (75% performance boost)</strong>.",
+                        "<strong>Figma to Code:</strong> Pixel-perfect translation from Figma specifications to accessible, modular HTML5/CSS3 and modern JavaScript."
+                    ],
+                    tags: ["JavaScript (ES6+)", "UI/UX Figma", "Government Platforms", "PDF Optimization", "Java / Jakarta EE", "REST APIs", "Git Flow"],
+                    links: []
                 },
                 {
                     id: "masfast",
                     title: "Founder, CEO & CTO",
                     company: "MasFast",
-                    period: "April 2020 — Present",
+                    companyType: "Logistics & Delivery Platform",
+                    period: "2020 — Present",
                     location: "Zacatecas, Mexico",
-                    description: "Technical leadership and executive management of last-mile logistics and food delivery platform. Architected the full-stack reactive ecosystem utilizing <strong>NestJS</strong>, <strong>Docker</strong>, <strong>PostgreSQL</strong>, and <strong>WebSockets</strong> for real-time GPS fleet tracking. Developed cross-platform mobile apps in <strong>Flutter</strong> (+1,000 downloads and +35,000 completed orders). Selected for the <strong>PotencIA MX</strong> accelerator by Meta & Tec de Monterrey, and recognized in the national Top 20 of <strong>Posible Mexico</strong>.",
+                    badge: "Startup & High Scalability",
+                    intro: "Technical leadership and full-stack architecture for a last-mile logistics startup with <strong>+35,000 completed orders</strong> and 1,000+ active downloads:",
+                    highlights: [
+                        "<strong>Reactive Backend Architecture:</strong> Designed core backend with <strong>NestJS</strong>, <strong>PostgreSQL</strong>, <strong>Docker</strong>, and <strong>WebSockets</strong> for real-time GPS tracking of drivers.",
+                        "<strong>Cross-Platform Mobile Apps:</strong> Built consumer and driver applications in <strong>Flutter</strong> with payment gateway and push notification integrations.",
+                        "<strong>PotencIA MX Accelerator (2025–2026):</strong> Selected for the prestigious AI acceleration program organized by <strong>Meta and Tecnológico de Monterrey</strong>.",
+                        "<strong>Posible Mexico:</strong> Ranked in the <strong>Top 20 nationwide</strong> out of 300+ technology and logistics ventures."
+                    ],
                     tags: ["NestJS", "Flutter", "TypeScript", "WebSockets", "Docker", "PostgreSQL", "GPS Tracking"],
-                    imageText: "MasFast",
                     links: [
                         { label: "Website", url: "https://masfast.app", icon: "fas fa-globe" },
-                        { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.masfast", icon: "fab fa-google-play" }
+                        { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.talzzoft.masfast", icon: "fab fa-google-play" }
                     ]
                 },
                 {
                     id: "ai-chatbots",
                     title: "AI Solutions Architect & Omnichannel Chatbots",
                     company: "Talzzoft / AI Projects",
+                    companyType: "Autonomous Multi-Agent Ecosystems",
                     period: "2024 — Present",
                     location: "Remote",
-                    description: "Architected multi-agent conversational ecosystems structured on <strong>Domain-Driven Design (DDD)</strong> for WhatsApp (BuilderBot + Baileys) and Telegram (GrammY). Integrated cutting-edge LLMs (Llama 3.3 70B via Groq, Gemini CLI), voice notes transcription with <strong>Whisper ASR</strong>, and computer vision. Engineered dynamic multi-channel <strong>whitelist access control</strong> to prevent prompt injection and mitigate token abuse.",
-                    tags: ["Multi-Agent AI", "Llama 3.3 & Gemini", "BuilderBot", "GrammY", "Whisper ASR", "Whitelist Security", "DDD"],
-                    imageText: "AI & Bots",
+                    badge: "Artificial Intelligence",
+                    intro: "Architecture and deployment of intelligent multimodal agents with token security and omnichannel integrations:",
+                    highlights: [
+                        "<strong>Multi-Agent Architecture (DDD):</strong> Domain-Driven Design modular agents for <strong>WhatsApp</strong> (BuilderBot + Baileys) and <strong>Telegram</strong> (GrammY) with PostgreSQL state persistence.",
+                        "<strong>LLM & Voice Orchestration:</strong> Llama 3.3 70B via Groq and Gemini CLI integrations, real-time voice-to-text with <strong>Whisper ASR</strong>, and computer vision pipelines.",
+                        "<strong>Security & Access Control:</strong> Strict <strong>dynamic whitelist system</strong> across channels preventing token abuse and unauthorized compute consumption.",
+                        "<strong>Authentication & Background Jobs:</strong> OAuth 2.0 integrations (TickTick, Google), JWT roles in NestJS, and persistent background job workers."
+                    ],
+                    tags: ["Multi-Agent AI", "Llama 3.3 & Gemini", "BuilderBot", "GrammY", "Whisper ASR", "Whitelist Security", "OAuth 2.0"],
                     links: [
                         { label: "GitHub Profile", url: "https://github.com/JMauricioJuanesM", icon: "fab fa-github" }
                     ]
+                },
+                {
+                    id: "talzzoft",
+                    title: "Founder & Web Solutions Developer",
+                    company: "Talzzoft",
+                    companyType: "Custom Web & E-Commerce",
+                    period: "2014 — Present",
+                    location: "Zacatecas, Mexico",
+                    badge: "Track Record",
+                    intro: "Custom software engineering and digital products for businesses and merchants:",
+                    highlights: [
+                        "<strong>E-Commerce & Custom Web:</strong> High-performance e-commerce stores, custom WordPress/WooCommerce solutions, and performant web apps.",
+                        "<strong>REST API Integrations:</strong> Payment gateway integrations, electronic invoicing, and internal management tooling.",
+                        "<strong>DevOps & Server Admin:</strong> Ubuntu Linux server configuration, Nginx reverse proxies, SSL certificates, and speed optimization."
+                    ],
+                    tags: ["JavaScript", "WordPress / WooCommerce", "REST APIs", "PHP", "Nginx", "Linux"],
+                    links: []
                 }
             ]
         },
@@ -282,94 +374,101 @@ const portfolioData = {
             sectionTitle: "Featured Projects",
             items: [
                 {
-                    title: "PNC & RPP — Nationwide Government Platforms",
-                    subtitle: "INFOTEC",
-                    description: "High-scale cadastral and registry platforms covering 900+ municipalities. Designed user-friendly procedure management, fast PDF engines, and robust REST communication.",
-                    tags: ["Frontend", "UI/UX", "REST APIs", "Jakarta EE", "PDF Engine"],
-                    imageText: "PNC & RPP"
+                    title: "RPP — Citizen Procedures Dashboard",
+                    category: "Government / In Production",
+                    description: "Built-from-scratch user interface for citizen property procedures in the Public Property Registry. Real-time search, dynamic state filters, interactive cards, and accelerated PDF delivery.",
+                    tags: ["HTML5 / CSS3", "JavaScript (ES6+)", "Fetch API", "UI/UX", "PDF Engine"]
                 },
                 {
-                    title: "MasFast Platform & Mobile Apps",
-                    subtitle: "Logistics & Food Delivery",
-                    description: "Complete last-mile ecosystem with NestJS backend, real-time WebSockets GPS tracking, payment gateways, and Flutter mobile apps.",
-                    tags: ["NestJS", "Flutter", "WebSockets", "Docker", "PostgreSQL"],
-                    imageText: "MasFast App",
+                    title: "PNC — National Cadastral Platform",
+                    category: "Nationwide Scale",
+                    description: "Modular CSS design, UI components, and final styling in production for Mexico's largest public cadastral system, serving 900+ municipalities.",
+                    tags: ["Modular CSS3", "UI/UX", "Figma to Code", "Responsive Design"]
+                },
+                {
+                    title: "MasFast — Platform & Delivery App",
+                    category: "Logistics & High Scale",
+                    description: "Complete last-mile ecosystem with 35,000+ deliveries. NestJS backend with WebSockets for real-time GPS tracking, PostgreSQL database, and Flutter mobile apps.",
+                    tags: ["NestJS", "Flutter", "TypeScript", "WebSockets", "Docker", "PostgreSQL"],
                     links: [
-                        { label: "View on Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.masfast", icon: "fab fa-google-play" }
+                        { label: "Website", url: "https://masfast.app", icon: "fas fa-globe" },
+                        { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.masfast", icon: "fab fa-google-play" }
                     ]
                 },
                 {
-                    title: "Omnichannel AI Assistant & RestaBot",
-                    subtitle: "Multi-Agent Automation",
-                    description: "Intelligent assistant with voice note processing, dynamic whitelist token security, and autonomous tool workflows for Telegram and WhatsApp.",
-                    tags: ["Node.js", "Llama 3.3", "Whisper", "BuilderBot", "GrammY", "Token Security"],
-                    imageText: "RestaBot AI"
+                    title: "RestaBot & Omnichannel AI Assistant",
+                    category: "Artificial Intelligence",
+                    description: "Multi-agent conversational ecosystem with Whisper ASR voice transcription, strict token security via dynamic whitelist, and Telegram/WhatsApp integration.",
+                    tags: ["Node.js", "Llama 3.3", "Whisper ASR", "BuilderBot", "GrammY", "Token Security"]
                 },
                 {
-                    title: "ReflejArte — E-commerce & Mobile App",
-                    subtitle: "B.S. Thesis Project",
-                    description: "Fine arts store with WordPress & WooCommerce backend, custom REST API integration, and companion Flutter mobile application.",
+                    title: "ReflejArte — App & Online Gallery",
+                    category: "E-Commerce & Graduation Project",
+                    description: "Digital art gallery powered by WordPress/WooCommerce backend and two-way REST API synchronization with a Flutter mobile app on Google Play Store (IPN thesis project).",
                     tags: ["WordPress", "WooCommerce", "Flutter", "REST API", "PHP"],
-                    imageText: "ReflejArte",
                     links: [
-                        { label: "View on Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.reflejarte", icon: "fab fa-google-play" }
+                        { label: "Play Store", url: "https://play.google.com/store/apps/details?id=com.talzzoft.reflejarte", icon: "fab fa-google-play" }
                     ]
                 }
             ]
         },
         awards: {
-            sectionTitle: "Awards & Accelerators",
+            sectionTitle: "Awards & Recognitions",
             items: [
                 {
-                    title: "PotencIA MX Accelerator (2025–2026)",
+                    title: "PotencIA MX (2025–2026)",
                     entity: "Meta & Tecnológico de Monterrey",
-                    description: "Selected among the top tech startups in Mexico for the intensive AI accelerator program driven by Meta and Tec de Monterrey."
+                    description: "Selected among the top innovative AI startups in Mexico for the accelerator program led by Meta and Tec de Monterrey.",
+                    icon: "fas fa-award"
                 },
                 {
                     title: "Top 20 Posible Mexico (2022)",
                     entity: "Fundación Televisa",
-                    description: "Recognized as one of the 20 most promising high-impact entrepreneurship and logistics tech initiatives across the country."
+                    description: "Ranked in the national Top 20 out of 300+ technology and entrepreneurship ventures evaluated in Mexico.",
+                    icon: "fas fa-medal"
                 },
                 {
-                    title: "2nd Place InnovaHack (2019)",
-                    entity: "InnovaHack",
-                    description: "Silver medal in national tech hackathon, rapid prototyping, and engineering challenges."
+                    title: "2nd Place — InnovaHack (2019)",
+                    entity: "COZCyT & InnovaHack",
+                    description: "Awarded 2nd place in the state tech innovation hackathon for rapid software prototype engineering.",
+                    icon: "fas fa-trophy"
                 },
                 {
-                    title: "Top 11 Campus Party Hackathon (2017)",
+                    title: "Top 11 Hackathon Campus Party (2017)",
                     entity: "Campus Party Mexico",
-                    description: "Finalist in Mexico's largest technology hackathon delivering software solutions under tight deadlines."
+                    description: "Finalist in Mexico's largest technology hackathon delivering working software solutions under tight deadlines.",
+                    icon: "fas fa-star"
                 }
             ]
         },
         education: {
-            sectionTitle: "Education",
+            sectionTitle: "Education & Certifications",
             items: [
                 {
                     title: "B.S. in Computer Systems Engineering",
-                    school: "National Polytechnic Institute (IPN) — UPIIZ",
-                    period: "2019 — 2026 (Degree in progress)",
-                    description: "Comprehensive education in computer science, enterprise software development, system architecture, and tech leadership at one of Latin America's top engineering universities.",
-                    imageText: "IPN UPIIZ"
+                    school: "Instituto Politécnico Nacional (IPN) — UPIIZ",
+                    period: "2019 — 2026 (Degree in process)",
+                    description: "Advanced education in computer science, enterprise software development, system architecture, and tech project management at one of Latin America's premier institutes.",
+                    tag: "IPN UPIIZ"
                 },
                 {
-                    title: "Technical Degree in IT Support and Maintenance",
-                    school: "CECYTEZ",
-                    period: "2014 — 2017",
-                    description: "Solid foundations in computer architecture, network infrastructure, hardware maintenance, and operating system management.",
-                    imageText: "CECYTEZ"
-                },
-                {
-                    title: "Language Studies — English B1/B2",
+                    title: "Language Training — English B1/B2",
                     school: "UAZ Language Center",
                     period: "Continuous Certification",
-                    description: "Certified B1 in active transition to B2. Fluent technical communication for documentation, software architecture, and international team collaboration.",
-                    imageText: "English B1/B2"
+                    description: "Solid B1 proficiency transitioning to B2 certification. Fluent technical communication for documentation, architecture, and international collaboration.",
+                    tag: "English B1 / B2"
+                },
+                {
+                    title: "Technical High School — IT Support & Systems",
+                    school: "CECYTEZ",
+                    period: "2014 — 2017",
+                    description: "Strong fundamentals in hardware infrastructure, network engineering, preventive maintenance, and Linux/Windows systems administration.",
+                    tag: "CECYTEZ"
                 }
             ]
         },
         skills: {
-            sectionTitle: "Tech Stack",
+            sectionTitle: "Technology Stack",
             categories: [
                 {
                     name: "Frontend & UI/UX",
@@ -378,7 +477,7 @@ const portfolioData = {
                         "JavaScript (ES6+) & TypeScript",
                         "Semantic HTML5 & Modular CSS3",
                         "Figma to Code (Pixel-Perfect UI)",
-                        "React & Responsive Design",
+                        "React & Responsive Web Design",
                         "Flutter for Android & iOS"
                     ]
                 },
@@ -400,7 +499,7 @@ const portfolioData = {
                         "Multi-Agent AI Architecture",
                         "LLM Integration (Llama 3.3, Gemini)",
                         "BuilderBot (WhatsApp) & GrammY (Telegram)",
-                        "Whisper ASR (Voice-to-Text)",
+                        "Whisper ASR (Speech-to-Text)",
                         "Whitelist Security & Token Protection"
                     ]
                 },
@@ -412,21 +511,16 @@ const portfolioData = {
                         "Docker & Docker-Compose",
                         "Nginx Reverse Proxy & SSL",
                         "Git & Git Flow / GitHub Actions",
-                        "Linux Server Administration (Ubuntu)"
+                        "Linux Server Admin (Ubuntu)"
                     ]
                 }
             ]
         },
         contact: {
             sectionTitle: "Contact",
-            description: "Have a project in mind, looking for a strong full-stack engineer, or interested in AI solutions? Let's connect.",
-            buttonText: "Send me an Email",
-            footerText: `&copy; ${new Date().getFullYear()} Mauricio Juanes — Designed and built modularly. Clean code and high performance.`
+            description: "Have a project in mind, looking for a full-stack engineer for your team, or interested in collaborating on software & AI? Let's connect.",
+            buttonText: "Send Email",
+            footerText: `&copy; ${new Date().getFullYear()} José Mauricio Juanes Martínez — Built with precision, modularity, and high performance.`
         }
     }
 };
-
-// Exportar para entorno navegador o Node si se requiere
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = portfolioData;
-}
