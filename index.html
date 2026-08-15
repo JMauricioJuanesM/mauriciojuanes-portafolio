@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mauricio Juanes — Desarrollador Full-Stack & UI/UX</title>
-    <meta name="description" content="Portafolio profesional de José Mauricio Juanes Martínez. Desarrollador Full-Stack, Frontend UI/UX, fundador de MasFast y colaborador en INFOTEC.">
-    
-    <!-- Google Fonts -->
+    <title>Mauricio Juanes — Desarrollador Full-Stack & UI/UX Specialist</title>
+    <meta name="description" content="Portafolio profesional de José Mauricio Juanes Martínez. Desarrollador Full-Stack, especialista Frontend UI/UX, colaborador en INFOTEC y Fundador/CTO de MasFast.">
+    <meta name="author" content="José Mauricio Juanes Martínez">
+    <meta property="og:title" content="Mauricio Juanes — Desarrollador Full-Stack & UI/UX">
+    <meta property="og:description" content="Portafolio profesional y experiencia en INFOTEC, MasFast, arquitecturas multi-agente de IA y desarrollo web moderno.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mauriciojuanes.com">
+
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Estilos Desacoplados -->
+    <!-- Estilos Principales -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Canvas de Partículas Interactivas & Efectos Ambientales de Fondo -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
     <!-- Botones Flotantes de Tema e Idioma -->
     <div class="ui-buttons">
         <button id="lang-toggle" class="ui-button" title="Change Language" aria-label="Cambiar idioma">EN</button>
@@ -29,9 +39,11 @@
     
     <!-- Barra de Navegación -->
     <header>
-        <nav class="navbar" aria-label="Navegación principal">
+        <nav class="navbar" id="navbar" aria-label="Navegación principal">
             <div class="nav-container">
-                <a href="#" class="nav-logo">Mauricio Juanes</a>
+                <a href="#hero" class="nav-logo" id="nav-logo">
+                    Mauricio Juanes<span>.</span>
+                </a>
                 <div class="nav-links">
                     <a href="#experience" id="nav-experience">Experiencia</a>
                     <a href="#projects" id="nav-projects">Proyectos</a>
@@ -48,44 +60,57 @@
         <!-- Sección Hero -->
         <section class="hero" id="hero">
             <div class="container">
-                <img src="qr-qa.png" alt="Foto de Mauricio Juanes" class="profile-photo reveal" onerror="this.src='https://placehold.co/180x180/0f172a/0ea5e9?text=MJ'">
-                <h1 id="hero-title" class="reveal">Mauricio Juanes</h1>
+                <!-- Avatar con Iniciales "MJ" -->
+                <div class="profile-avatar-wrapper reveal">
+                    <div class="profile-avatar" id="hero-avatar">MJ</div>
+                </div>
+
+                <!-- Ubicación -->
+                <div class="location-pill reveal">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="hero-location">Zacatecas, México</span>
+                </div>
+
+                <h1 id="hero-title" class="reveal">José Mauricio Juanes Martínez</h1>
                 <p class="subtitle reveal">
                     <span id="typed"></span><span class="typed-cursor">|</span>
                 </p>
                 <p id="hero-bio" class="bio reveal"></p>
+                
                 <div class="social-links reveal">
                     <a href="https://github.com/JMauricioJuanesM" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://gitlab.com/JMauricioJuanesM" target="_blank" rel="noopener noreferrer" title="GitLab" aria-label="GitLab"><i class="fab fa-gitlab"></i></a>
-                    <a href="https://linkedin.com/in/mauriciojuanes" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:mauriciojuanes22@gmail.com" title="Correo" aria-label="Correo"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/mauricio-juanes" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:mauriciojuanes22@gmail.com" title="Correo Electrónico" aria-label="Correo"><i class="fas fa-envelope"></i></a>
                 </div>
-                <div class="main-cta reveal">
-                    <a href="#contact" id="hero-cta" class="button">Hablemos</a>
+
+                <div class="hero-actions reveal">
+                    <a href="#contact" id="hero-cta" class="button"><i class="fas fa-paper-plane"></i> Hablemos</a>
+                    <a href="#projects" id="hero-projects-cta" class="button secondary"><i class="fas fa-layer-group"></i> Ver Proyectos</a>
                 </div>
             </div>
         </section>
 
-        <!-- Sección Experiencia -->
+        <!-- Sección Experiencia Profesional (Prioridad: INFOTEC -> MasFast -> IA/Chatbots) -->
         <section id="experience">
             <div class="container">
                 <h2 class="section-title reveal">
                     <i class="fas fa-briefcase"></i><span id="experience-section-title">Experiencia Profesional</span>
                 </h2>
                 <div id="experience-list">
-                    <!-- Contenido renderizado modularmente desde js/data.js -->
+                    <!-- Contenido modular renderizado desde js/data.js -->
                 </div>
             </div>
         </section>
 
-        <!-- Sección Proyectos -->
+        <!-- Sección Proyectos Destacados -->
         <section id="projects">
             <div class="container">
                 <h2 class="section-title reveal">
-                    <i class="fas fa-code-branch"></i><span id="projects-section-title">Proyectos Destacados</span>
+                    <i class="fas fa-layer-group"></i><span id="projects-section-title">Proyectos Destacados</span>
                 </h2>
-                <div id="projects-list">
-                    <!-- Contenido renderizado modularmente desde js/data.js -->
+                <div class="projects-grid" id="projects-list">
+                    <!-- Contenido modular renderizado desde js/data.js -->
                 </div>
             </div>
         </section>
@@ -94,48 +119,50 @@
         <section id="awards">
             <div class="container">
                 <h2 class="section-title reveal">
-                    <i class="fas fa-award"></i><span id="awards-section-title">Reconocimientos & Aceleración</span>
+                    <i class="fas fa-trophy"></i><span id="awards-section-title">Reconocimientos & Aceleración</span>
                 </h2>
-                <div class="skills-grid" id="awards-list">
-                    <!-- Contenido renderizado modularmente desde js/data.js -->
+                <div class="awards-grid" id="awards-list">
+                    <!-- Contenido modular renderizado desde js/data.js -->
                 </div>
             </div>
         </section>
 
-        <!-- Sección Educación -->
+        <!-- Sección Educación & Formación -->
         <section id="education">
             <div class="container">
                 <h2 class="section-title reveal">
-                    <i class="fas fa-user-graduate"></i><span id="education-section-title">Educación</span>
+                    <i class="fas fa-user-graduate"></i><span id="education-section-title">Educación & Formación</span>
                 </h2>
-                <div id="education-list">
-                    <!-- Contenido renderizado modularmente desde js/data.js -->
+                <div class="edu-grid" id="education-list">
+                    <!-- Contenido modular renderizado desde js/data.js -->
                 </div>
             </div>
         </section>
 
-        <!-- Sección Habilidades -->
+        <!-- Sección Habilidades (Stack Tecnológico) -->
         <section id="skills">
             <div class="container">
                 <h2 class="section-title reveal">
                     <i class="fas fa-cogs"></i><span id="skills-section-title">Stack Tecnológico</span>
                 </h2>
                 <div class="skills-grid" id="skills-list">
-                    <!-- Contenido renderizado modularmente desde js/data.js -->
+                    <!-- Contenido modular renderizado desde js/data.js -->
                 </div>
             </div>
         </section>
 
         <!-- Sección Contacto -->
         <section id="contact">
-            <div class="container reveal">
-                <h2 class="section-title">
-                    <i class="fas fa-paper-plane"></i><span id="contact-section-title">Contacto</span>
-                </h2>
-                <p id="contact-description"></p>
-                <a href="mailto:mauriciojuanes22@gmail.com" id="contact-email-btn" class="button">
-                    <i class="fas fa-envelope"></i> Enviar Correo
-                </a>
+            <div class="container">
+                <div class="contact-card reveal">
+                    <h2 class="section-title" style="margin-bottom: 20px;">
+                        <i class="fas fa-paper-plane"></i><span id="contact-section-title">Contacto</span>
+                    </h2>
+                    <p id="contact-description"></p>
+                    <a href="mailto:mauriciojuanes22@gmail.com" id="contact-email-btn" class="button">
+                        <i class="fas fa-envelope"></i> Enviar Correo
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -146,7 +173,7 @@
         </div>
     </footer>
 
-    <!-- Scripts Desacoplados y Modulares -->
+    <!-- Scripts Modulares Desacoplados -->
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
 </body>
